@@ -7,3 +7,5 @@ export const BLUE = "#11B3FE";
 export const DARK_BLUE = "#0095E0";
 export const GRAY = "#F6F7F8";
 export const DARK_DRAY = "#E3EBEF";
+
+export const PAGE_SIZE = 10;

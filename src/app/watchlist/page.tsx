@@ -5,6 +5,7 @@ import Pagination from "@/components/pagination/Pagination";
 import Table from "@/components/table/Table";
 import * as S from "./styles";
 import { redirect } from "next/navigation";
+import { PAGE_SIZE } from "@/constants";
 
 const Page = ({ searchParams }: { searchParams: { page: string } }) => {
   if (+searchParams.page < 0) {
@@ -12,8 +13,8 @@ const Page = ({ searchParams }: { searchParams: { page: string } }) => {
   }
   const page = +searchParams.page || 1;
   const { data, isLoading, error } = useGetCurrencies(
-    10,
-    page > 1 ? page * 10 : 0
+    PAGE_SIZE,
+    page > 1 ? page * PAGE_SIZE : 0
   );
   return (
     <S.PageContainer>
@@ -21,7 +22,7 @@ const Page = ({ searchParams }: { searchParams: { page: string } }) => {
         <>
           <Table data={data.data} />
           <Pagination
-            pageSize={10}
+            pageSize={PAGE_SIZE}
             totalCount={data.meta.count}
             siblingCount={5}
             currentPage={+searchParams.page || 1}
